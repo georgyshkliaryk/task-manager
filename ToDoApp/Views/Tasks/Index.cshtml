@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ToDoApp.Models.Task>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 class="text-center">Tasks to do:</h3>
+
+<div class="border box-shadow mb-3 text-center rounded tasks__container link" style="min-height: 75vh;">
+    @foreach (var item in Model)
+    {
+        <div style="background-color: @item.Color" class="rounded border box-shadow mb-3 task__container attachment">
+            <div disabled class="text__container">
+                @Html.DisplayFor(modelItem => item.Text)
+            </div>
+            <div class="right-icons">
+                <a asp-action="Edit" asp-route-id="@item.TaskId" class="icon-edit" title="Edit task"><i class="fas fa-edit"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.TaskId" class="icon-delete" title="Delete task"><i class="fas fa-times"></i></a>
+            </div>
+            <div class="left-icons">
+                <a asp-action="EditColorBlue" asp-route-id="@item.TaskId" class="icon-color" title="Lightblue" style="color: blue"><i class="fas fa-square"></i></a>
+                <a asp-action="EditColorPink" asp-route-id="@item.TaskId" class="icon-color" title="Pink" style="color: #E75480"><i class="fas fa-square"></i></a>
+                <a asp-action="EditColorYellow" asp-route-id="@item.TaskId" class="icon-color" title="Yellow" style="color: yellow"><i class="fas fa-square"></i></a>
+            </div>
+            <div class="click-to-lift">
+                Click on task to lift up
+            </div>
+        </div>
+
+
+    }
+    <div class="add-task">
+        <div class="add-task__icon"><i class="fas fa-plus"></i></div>
+        <div class="add-task__text">Click anywhere on the workspace to add new task</div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.link').click(function () {
+            window.location = "/Tasks/Create";
+        });
+        $(".attachment").on("click", function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
