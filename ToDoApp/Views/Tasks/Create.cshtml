@@ -10,10 +10,9 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group" style="width: 40em;">
                 <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control"/>
-               @* <input name="editor1" asp-for="Text"/>*@
+                <textarea asp-for="Text" class="form-control" id="content1"></textarea>
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             
@@ -30,6 +29,11 @@
 <div>
     <a asp-action="Index"><i class="fas fa-arrow-left"></i> Back to Tasks</a>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var editor = CKEDITOR.replace("content1");
+    });
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

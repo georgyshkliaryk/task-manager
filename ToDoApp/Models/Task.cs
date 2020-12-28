@@ -12,7 +12,7 @@ namespace ToDoApp.Models
         [Key]
         public int TaskId { get; set; }
 
-        [Column(TypeName = "nvarchar(250)")]
+        [Column(TypeName = "text")]
         [Required]
         public string Text { get; set; }
 

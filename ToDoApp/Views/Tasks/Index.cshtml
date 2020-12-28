@@ -11,7 +11,7 @@
     {
         <div style="background-color: @item.Color" class="rounded border box-shadow mb-3 task__container attachment">
             <div disabled class="text__container">
-                @Html.DisplayFor(modelItem => item.Text)
+                @Html.Raw(item.Text)
             </div>
             <div class="right-icons">
                 <a asp-action="Edit" asp-route-id="@item.TaskId" class="icon-edit" title="Edit task"><i class="fas fa-edit"></i></a>
